@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class telaLogin extends telaBase {
+public class telaLogin extends telaBase implements ActionListener {
 	
 	private JButton login, quit;
 	JTextField username = new JTextField(20);
@@ -22,7 +22,6 @@ public class telaLogin extends telaBase {
 		window.setVisible(true);
 		window.setSize(400, 200);
 		window.setLocationRelativeTo(null); //CENTRALIZAR A JANELA DE ACORDO COM A TELA
-		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	/*
@@ -40,6 +39,7 @@ public class telaLogin extends telaBase {
 		painelMid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		setLoginField(painelMid);
 		setLoginButton(painelInf);
+		quit.addActionListener(this);
 	}
 	/*
 	 * RECEBE UM PAINEL TIPO GRIDBAGLAYOUT
@@ -80,6 +80,11 @@ public class telaLogin extends telaBase {
 	private void setIcon(JFrame janela){
 		Image iconeTitulo = Toolkit.getDefaultToolkit().getImage("img/logo.png");  
 		janela.setIconImage(iconeTitulo);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		aposClick(e);
 	}
 	
 }
