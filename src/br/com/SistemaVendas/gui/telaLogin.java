@@ -32,11 +32,13 @@ public class telaLogin extends telaBase implements ActionListener {
 		JPanel painelSup = new JPanel();
 		JPanel painelInf = new JPanel();
 		painelSup.setBackground(Color.GRAY);
-		painelSup.add(new JLabel("SISTEMA DE VENDAS"));
+		painelSup.add(setRotulo("SISTEMA DE VENDAS | SOLUÇÕES PARA O SEU NEGÓCIO", Color.WHITE, 11));
 		inserirCompCima(window, painelSup);
 		inserirCompMeio(window, painelMid);
 		inserirCompBaixo(window, painelInf);
+		painelSup.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		painelMid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		painelInf.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		setLoginField(painelMid);
 		setLoginButton(painelInf);
 		quit.addActionListener(this);
@@ -66,8 +68,9 @@ public class telaLogin extends telaBase implements ActionListener {
 	}
 	private void setLoginButton(JPanel painel){
 		JPanel botoes = new JPanel();
-		login = new JButton("ACESSAR");
+		login = new JButton("ENTRAR");
 		quit = new JButton("SAIR");
+		botoes.add(login);
 		botoes.add(quit);
 		painel.add(botoes);
 	}
