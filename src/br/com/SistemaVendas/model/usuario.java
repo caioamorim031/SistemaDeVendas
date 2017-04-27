@@ -1,6 +1,6 @@
 package br.com.SistemaVendas.model;
 
-public class usuario {
+public class Usuario {
 	
 	private String nomeUsuario;
 	private String senha;
