@@ -16,7 +16,9 @@ import javafx.stage.StageStyle;
 public class telaLogin extends Application {
 	
 	ControllerVendedor controllerVen = new ControllerVendedor();
-
+	ArquivoController init = new ArquivoController();
+	
+	
     @FXML
     private Button OK;
     
@@ -35,24 +37,25 @@ public class telaLogin extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		ArquivoController init = new ArquivoController();
-		init.init();
     	primaryStage.initStyle(StageStyle.UNDECORATED);
-		Scene tela = new Scene(FXMLLoader.load(getClass().getResource("/br/com/SistemaVendas/controller/TelaLogin.fxml")));
+		Scene tela = new Scene(FXMLLoader.load(getClass().getResource("TelaLogin.fxml")));
 		primaryStage.setScene(tela);
 		primaryStage.setTitle("Sistema de Vendas");
 		Image icon = new Image(getClass().getResourceAsStream("/img/logo.png"));
 		primaryStage.getIcons().add(icon);
 		primaryStage.show();
+		init.init();
 	}
 	
-	void login(ActionEvent evento){
-		
+	@FXML
+	void login(ActionEvent evento) throws Exception{
 		if(controllerVen.valirdarLogin(username.getText(), senha.getText()) == true){
-			/*tratar caso login seja efetuado com sucesso*/
+			menuADM tela = new menuADM();
+			tela.init();
 		}
 		else{
 			/*tratar caso login não seja executado*/
+			System.out.println("ERRO");
 		}
 	}
 	
