@@ -7,6 +7,12 @@ public class Vendedor extends Usuario {
 	private double salarioM;
 	private int tipo;
 	
+	public int getTipo() {
+		return tipo;
+	}
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
 	public String getNome() {
 		return nome;
 	}
