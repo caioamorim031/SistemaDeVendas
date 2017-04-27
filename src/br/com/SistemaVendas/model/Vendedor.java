@@ -5,6 +5,7 @@ public class Vendedor extends Usuario {
 	private String nome;
 	private String endereco;
 	private double salarioM;
+	private int tipo;
 	
 	public String getNome() {
 		return nome;
@@ -24,4 +25,5 @@ public class Vendedor extends Usuario {
 	public void setSalarioM(double salarioM) {
 		this.salarioM = salarioM;
 	}
+
 }
