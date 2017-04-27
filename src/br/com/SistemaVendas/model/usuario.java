@@ -4,7 +4,6 @@ public class Usuario {
 	
 	private String nomeUsuario;
 	private String senha;
-	private String salario;
 	
 	public String getNomeUsuario() {
 		return nomeUsuario;
