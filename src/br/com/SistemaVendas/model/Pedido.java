@@ -6,7 +6,6 @@ public class Pedido {
 	private Produto produto;
 	private Vendedor vendedor;
 	private double valorFinal;
-	/*chegar la na frente Caio vai pedir para colocar um atributo qtd*/
 	
 	public int getCodPedido() {
 		return codPedido;

@@ -18,18 +18,17 @@ public class Login {
 		if(arquivo.init()==true){
 			solicitarInformacao();
 		}
-		else
-			showlogin();
+		showlogin();
 		
 	}
 	
-	public static void solicitarInformacao(){
+	public static void solicitarInformacao() throws IOException{
 		Scanner leitor = new Scanner(System.in);
 		Vendedor vendedor = new Vendedor();
 		ControllerVendedor controller = new ControllerVendedor();
-		String aux;
+		char aux;
 		
-		System.out.print("Arquivo Criado");
+		System.out.print("Arquivo Criado\n");
 		System.out.println("\tSolicitação de Primeiro usuario");
 		
 		System.out.print("Entre com o nome: ");
@@ -48,15 +47,14 @@ public class Login {
 		vendedor.setSenha(leitor.next());
 		
 		System.out.print("Administrador? S/N - ");
-		aux = leitor.next();
-		aux = aux.toLowerCase();
-		while(aux!="s" || aux!="n"){
-				System.out.print("\nEntre com uma informação válida. S/N - ");
-				aux = leitor.next();
-				aux = aux.toLowerCase();
+		aux = (char)System.in.read();
+		while(aux!='s' && aux!='S' && aux!='n' && aux!='N'){
+			System.out.print("Insira uma opção válida! S/N -  ");
+			aux = (char)System.in.read();
 		}
-		if(aux == "s")
+		if(aux == 's' || aux == 'S'){
 			vendedor.setTipo(1);
+		}
 		else
 			vendedor.setTipo(0);
 		controller.novoFuncionario(vendedor);
@@ -69,14 +67,14 @@ public class Login {
 		String username,senha;
 		boolean retorno;
 		
-		System.out.println("\tLOGIN");
-		System.out.print("UserName: ");
-		username = leitor.next();
-		
-		System.out.print("\nSenha: ");
-		senha = leitor.next();
-		
 		do{
+			System.out.println("\tLOGIN");
+			System.out.print("UserName: ");
+			username = leitor.next();
+			
+			System.out.print("\nSenha: ");
+			senha = leitor.next();
+			
 			retorno =controller.valirdarLogin(username, senha); 
 			if(retorno==true){
 				menu.menuFuncionario(controller.returnVendedor(username));
