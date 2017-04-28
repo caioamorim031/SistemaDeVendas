@@ -5,17 +5,12 @@ import java.io.IOException;
 
 public class ArquivoController {
 
-	private File arq = new File("BD.txt");
-	
-	public void init(){
+	private File arq = new File("BD.bin");
+	public boolean init() throws IOException{
 		if(!arq.exists()){
-			try {
-				arq.createNewFile();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			arq.createNewFile();
+			return true;
 		}
+		return false;
 	}
-	
 }

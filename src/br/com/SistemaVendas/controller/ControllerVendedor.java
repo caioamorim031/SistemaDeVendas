@@ -49,4 +49,11 @@ public class ControllerVendedor {
 		return false;
 	}
 
+	public Vendedor returnVendedor(String Username){
+		for(int i = 0;i<vendedores.size();i++){
+			if(vendedores.get(i).getNomeUsuario().equals(Username))
+				return vendedores.get(i);
+		}
+		return null;
+	}
 }

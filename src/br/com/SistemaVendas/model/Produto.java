@@ -2,6 +2,7 @@ package br.com.SistemaVendas.model;
 
 public class Produto {
 	
+	private int codProduto;
 	private String nome;
 	private String descricao;
 	private double preco;
@@ -12,7 +13,6 @@ public class Produto {
 				"\nPreço: " + this.getPreco() + "\tQuantidade em estoque: " + this.getQtdEstoque()+
 				"\nDescrição: " + this.getDescricao();
 	}
-	
 	public String getNome() {
 		return nome;
 	}
@@ -37,5 +37,11 @@ public class Produto {
 	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
 	}
-
+	public int getCodProduto() {
+		return codProduto;
+	}
+	public void setCodProduto(int codProduto) {
+		this.codProduto = codProduto;
+	}
+	
 }
