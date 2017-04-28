@@ -2,12 +2,6 @@ package br.com.SistemaVendas.controller;
 
 import java.util.ArrayList;
 import br.com.SistemaVendas.model.Vendedor;
-import br.com.SistemaVendas.model.Vendedor;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 
 public class ControllerVendedor {
 
@@ -18,12 +12,14 @@ public class ControllerVendedor {
 		vendedores = new ArrayList<Vendedor>();
 	}
 	
-	public void novoFuncionario(Vendedor vend){
+	public boolean novoFuncionario(Vendedor vend){
 		if(vendedores.contains(vend)==false){
 			vendedores.add(vend);
+			System.out.println("GRAVADO");
+			return true;
 		}
 		else
-			System.out.println("Funcionáio já cadastrado.");
+			return false;
 	}
 	
 	public void removerVendedor(String nomeVendedor){
@@ -42,8 +38,7 @@ public class ControllerVendedor {
 				if(vendedores.get(i).getSenha().equals(senha)){
 					return true;
 				}
-				else
-					return false;
+				else return false;
 			}
 		}
 		return false;
