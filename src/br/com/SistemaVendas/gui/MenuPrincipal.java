@@ -5,9 +5,10 @@ import java.util.Scanner;
 import br.com.SistemaVendas.model.Vendedor;
 
 public class MenuPrincipal {
+	private Scanner leitor = new Scanner(System.in);
 	
 	public void menuFuncionario(Vendedor vend){
-		Scanner leitor = new Scanner(System.in);
+		
 		int op;
 		do{
 			if(vend.getTipo()==1){
@@ -20,8 +21,16 @@ public class MenuPrincipal {
 			System.out.println("6 - Listar Pedidos em aberto");
 			System.out.println("7 - Sair");
 			op = leitor.nextInt();
-			
+			if(vend.getTipo()==1){
+				checkValor(1, 7, op);
+			}else checkValor(4, 7, op);
 		}while(op!=7);
 	}
 	
+	private void checkValor(int min, int max, int valorDigitado){
+		while(valorDigitado > max || valorDigitado < min){
+			System.out.println("Digite novamente: ");
+			valorDigitado = leitor.nextInt();
+		}
+	}
 }
