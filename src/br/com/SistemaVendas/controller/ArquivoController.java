@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class ArquivoController {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	private File arq = new File("BD.bin");
 	public boolean init() throws IOException{
 		if(!arq.exists()){
