@@ -25,6 +25,24 @@ public class MenuPrincipal {
 				checkValor(1, 7, op);
 			}else checkValor(4, 7, op);
 		}while(op!=7);
+		switch(op){
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+			default:
+				break;
+		}
 	}
 	
 	private void checkValor(int min, int max, int valorDigitado){
