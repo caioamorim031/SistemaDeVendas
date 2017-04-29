@@ -5,7 +5,7 @@ public class Produto {
 	private int codProduto;
 	private String nome;
 	private String descricao;
-	private double preco;
+	private float preco;
 	private int qtdEstoque;
 	
 	public String toString(){
@@ -25,10 +25,10 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public double getPreco() {
+	public float getPreco() {
 		return preco;
 	}
-	public void setPreco(double preco) {
+	public void setPreco(float preco) {
 		this.preco = preco;
 	}
 	public int getQtdEstoque() {

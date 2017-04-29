@@ -15,6 +15,7 @@ public class Login {
 	
 	static void inicializarSistema() throws IOException{
 		ArquivoController arquivo = new ArquivoController();
+		ControllerVendedor controller = new ControllerVendedor();
 		if(arquivo.init()==true){
 			solicitarInformacao();
 		}
@@ -28,39 +29,45 @@ public class Login {
 		ControllerVendedor controller = new ControllerVendedor();
 		char aux;
 		
-		System.out.print("Arquivo Criado\n");
-		System.out.println("\tSolicitação de Primeiro usuario");
-		
 		System.out.print("Entre com o nome: ");
 		vendedor.setNome(leitor.nextLine());
 		
-		System.out.print("\nEndereço: ");
+		System.out.print("Endereço: ");
 		vendedor.setEndereco(leitor.nextLine());
 		
-		System.out.print("\nSalário: ");
+		System.out.print("Salário: ");
 		vendedor.setSalarioM(leitor.nextDouble());
 		
-		System.out.print("\nUserName: ");
+		System.out.print("UserName: ");
 		vendedor.setNomeUsuario(leitor.next());
-		
-		System.out.print("\nSenha: ");
-		vendedor.setSenha(leitor.next());
-		
-		System.out.print("Administrador? S/N - ");
-		aux = (char)System.in.read();
-		while(aux!='s' && aux!='S' && aux!='n' && aux!='N'){
-			System.out.print("Insira uma opção válida! S/N -  ");
+		if(controller.validarUserName(vendedor.getNomeUsuario())==true){
+			System.out.println("NOME DE USUÁRIO JÁ CADASTRADO!\n\n\n\n\n");
+		}
+		else{
+			System.out.print("Senha: ");
+			vendedor.setSenha(leitor.next());
+			
+			System.out.print("Administrador? S/N - ");
 			aux = (char)System.in.read();
+			while(aux!='s' && aux!='S' && aux!='n' && aux!='N'){
+				System.out.print("Insira uma opção válida! S/N -  ");
+				aux = (char)System.in.read();
+			}
+			if(aux == 's' || aux == 'S'){
+				vendedor.setTipo(1);
+			}
+			else
+				vendedor.setTipo(0);
+			if(controller.novoFuncionario(vendedor)==true){
+				System.out.println("\t\tCADASTRO REALIZADO!\n\n\n\n\n");
+			}
+			else{
+				System.out.println("\t\tCADASTRO NÃO REALIZADO!\n\n\n\n\n");
+			}
 		}
-		if(aux == 's' || aux == 'S'){
-			vendedor.setTipo(1);
-		}
-		else
-			vendedor.setTipo(0);
-		controller.novoFuncionario(vendedor);
 	}
 
-	public static void showlogin(){
+	public static void showlogin() throws IOException{
 		Scanner leitor = new Scanner(System.in);
 		ControllerVendedor controller = new ControllerVendedor();
 		MenuPrincipal menu = new MenuPrincipal();
@@ -72,7 +79,7 @@ public class Login {
 			System.out.print("UserName: ");
 			username = leitor.next();
 			
-			System.out.print("\nSenha: ");
+			System.out.print("Senha: ");
 			senha = leitor.next();
 			
 			retorno =controller.valirdarLogin(username, senha); 

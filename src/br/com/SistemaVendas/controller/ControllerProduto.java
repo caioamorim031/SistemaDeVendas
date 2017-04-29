@@ -5,19 +5,14 @@ import br.com.SistemaVendas.model.Produto;
 
 public class ControllerProduto {
 	
-	ArrayList<Produto> produtos;
+	static ArrayList<Produto> produtos;
 	
 	public ControllerProduto(){
 		produtos = new ArrayList<Produto>();
 	}
 	
 	public void novoProduto(Produto pro){
-		if(produtos.contains(pro)){
-			System.out.println("PRODUTO JÁ CADASTRADO.");
-		}
-		else{
-			produtos.add(pro);
-		}
+		produtos.add(pro);
 	}
 	
 	public void removerProduto(Produto Pro){
@@ -41,9 +36,19 @@ public class ControllerProduto {
 	}
 	
 	public void listarTodos(){
-		for(int i = 0; i<produtos.size();i++){
-			produtos.get(i).toString();
+		if(produtos.size()==0){
+			System.out.println("NÃO EXISTEM PRODUTOS CADASTRADOS!");
+		}
+		else{
+			System.out.println("RELATÓRIO DE PRODUTOS EM ESTOQUE");
+			for(int i = 0;i<produtos.size();i++){
+				System.out.println((i+1)+" - " + produtos.get(i).getNome() + " - Estoque: " + produtos.get(i).getQtdEstoque());
+			}
+			System.out.println("\n\n\n\n\n");
 		}
 	}
 	
+	public int sizeProdutos(){
+		return produtos.size();
+	}
 }
