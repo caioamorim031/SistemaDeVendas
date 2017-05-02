@@ -1,9 +1,14 @@
 package br.com.SistemaVendas.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Pedido {
+public class Pedido implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vendedor vendedor;
 	private Date dataPedido;
 	private ArrayList<ItemPedido> produtos = new ArrayList<ItemPedido>();

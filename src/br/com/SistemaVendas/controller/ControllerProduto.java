@@ -3,9 +3,13 @@ package br.com.SistemaVendas.controller;
 import java.util.ArrayList;
 import br.com.SistemaVendas.model.Produto;
 
+import br.com.SistemaVendas.repositorio.RepositorioProduto;
+
 public class ControllerProduto {
 	
 	static ArrayList<Produto> produtos;
+	
+	RepositorioProduto repositorio = new RepositorioProduto();
 	
 	public ControllerProduto(){
 		produtos = new ArrayList<Produto>();
@@ -66,6 +70,20 @@ public class ControllerProduto {
 				return produtos.get(i).getPreco();
 		}
 		return -1;
+	}
+	public void salvar(){
+		for(int i=0;i<produtos.size();i++){
+			Produto tmp = produtos.get(i);
+			repositorio.salvarDados(tmp, tmp.getNome());
+		}
+	}
+	public void lerProdutos(){
+		try {
+			repositorio.lerDados(produtos);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -9,19 +9,19 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import br.com.SistemaVendas.model.Vendedor;
+import br.com.SistemaVendas.model.Pedido;
 
-public class RepositorioVendedor implements Serializable {
+public class RepositorioPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ObjectOutputStream arquivo;
 
-	private File diretorio = new File("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Vendedores/");
+	private File diretorio = new File("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Pedidos/");
 
-	public void salvarDados(Vendedor vendedor, String nomeVendedor) {
+	public void salvarDados(Pedido pedido, String dataPedido) {
 		try {
-			arquivo = new ObjectOutputStream(new FileOutputStream("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Vendedores/" + (nomeVendedor + ".bin")));
-			arquivo.writeObject(vendedor);
+			arquivo = new ObjectOutputStream(new FileOutputStream("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Pedidos/" + (dataPedido + ".bin")));
+			arquivo.writeObject(pedido);
 			arquivo.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -29,16 +29,16 @@ public class RepositorioVendedor implements Serializable {
 		}
 	}
 
-	public void lerDados(ArrayList<Vendedor> vendedores) throws ClassNotFoundException {
+	public void lerDados(ArrayList<Pedido> pedidos) throws ClassNotFoundException {
 		File arquivos[] = diretorio.listFiles();
 		ObjectInputStream arquivo;
 		try {
 			for (int i = 0; i < arquivos.length; i++) {
-				Vendedor tmp = new Vendedor();
+				Pedido tmp;
 				File tmpArq = arquivos[i];
 				arquivo = new ObjectInputStream(new FileInputStream(tmpArq));
-				tmp = (Vendedor) arquivo.readObject();
-				vendedores.add(tmp);
+				tmp = (Pedido) arquivo.readObject();
+				pedidos.add(tmp);
 				arquivo.close();
 			}
 		} catch (IOException e) {

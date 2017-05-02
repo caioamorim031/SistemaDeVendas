@@ -2,6 +2,8 @@ package br.com.SistemaVendas.gui;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import br.com.SistemaVendas.controller.ControllerPedido;
 import br.com.SistemaVendas.controller.ControllerProduto;
 import br.com.SistemaVendas.controller.ControllerVendedor;
 import br.com.SistemaVendas.model.ItemPedido;
@@ -17,6 +19,7 @@ public class MenuPrincipal {
 		String userName;
 		ControllerVendedor controllerVendedor = new ControllerVendedor();
 		ControllerProduto controllerProduto = new ControllerProduto();
+		ControllerPedido controllerPedido = new ControllerPedido();
 		Scanner leitor = new Scanner(System.in);
 		int op;
 		do{
@@ -68,6 +71,8 @@ public class MenuPrincipal {
 				break;
 			case 7:
 				controllerVendedor.salvar();
+				controllerProduto.salvar();
+				controllerPedido.salvar();
 				break;
 				default:
 					break;

@@ -1,7 +1,13 @@
 package br.com.SistemaVendas.model;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int codProduto;
 	private String nome;
 	private String descricao;
