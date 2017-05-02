@@ -64,11 +64,12 @@ public class ControllerVendedor {
 		for(int i=0;i<vendedores.size();i++){
 			Vendedor tmp = vendedores.get(i);
 			repositorio.salvarDados(tmp, tmp.getNome());
+			
 		}
 	}
 	public void lerVendedores(){
 		try {
-			vendedores = repositorio.lerDados(vendedores);
+			repositorio.lerDados(vendedores);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
