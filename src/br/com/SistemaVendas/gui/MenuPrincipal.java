@@ -64,6 +64,7 @@ public class MenuPrincipal {
 			case 6:
 				break;
 			case 7:
+				controllerVendedor.salvar();
 				break;
 				default:
 					break;

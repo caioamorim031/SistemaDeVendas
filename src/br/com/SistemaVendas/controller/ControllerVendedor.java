@@ -1,10 +1,14 @@
 package br.com.SistemaVendas.controller;
 
+import br.com.SistemaVendas.repositorio.RepositorioVendedor;
+
 import java.util.ArrayList;
 import br.com.SistemaVendas.model.Vendedor;
 
 public class ControllerVendedor {
 
+	RepositorioVendedor repositorio = new RepositorioVendedor();
+	
 	Vendedor funcionario = new Vendedor();
 	static ArrayList<Vendedor> vendedores= new ArrayList<Vendedor>();
 	
@@ -55,5 +59,19 @@ public class ControllerVendedor {
 			}
 		}
 		return false;
+	}
+	public void salvar(){
+		for(int i=0;i<vendedores.size();i++){
+			Vendedor tmp = vendedores.get(i);
+			repositorio.salvarDados(tmp, tmp.getNome());
+		}
+	}
+	public void lerVendedores(){
+		try {
+			vendedores = repositorio.lerDados(vendedores);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

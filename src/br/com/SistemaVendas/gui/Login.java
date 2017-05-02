@@ -15,7 +15,6 @@ public class Login {
 	
 	static void inicializarSistema() throws IOException{
 		ArquivoController arquivo = new ArquivoController();
-		ControllerVendedor controller = new ControllerVendedor();
 		if(arquivo.init()==true){
 			solicitarInformacao();
 		}
