@@ -51,4 +51,21 @@ public class ControllerProduto {
 	public int sizeProdutos(){
 		return produtos.size();
 	}
+
+	public boolean pesquisarCod(int auxProduto){
+		for(int i = 0;i<produtos.size();i++){
+			if(produtos.get(i).getCodProduto()==auxProduto)
+				return true;
+		}
+		return false;
+	}
+	
+	public double valorUnitario(int auxProduto){
+		for(int i = 0;i<produtos.size();i++){
+			if(produtos.get(i).getCodProduto()==auxProduto)
+				return produtos.get(i).getPreco();
+		}
+		return -1;
+	}
+	
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import br.com.SistemaVendas.controller.ControllerProduto;
 import br.com.SistemaVendas.controller.ControllerVendedor;
+import br.com.SistemaVendas.model.ItemPedido;
+import br.com.SistemaVendas.model.Pedido;
 import br.com.SistemaVendas.model.Produto;
 import br.com.SistemaVendas.model.Vendedor;
 
@@ -26,7 +28,7 @@ public class MenuPrincipal {
 			}
 			System.out.println("4 - Novo Pedido");
 			System.out.println("5 - Detalhes do Estoque");
-			System.out.println("6 - Listar Pedidos em aberto");
+			System.out.println("6 - Listar Pedidos");
 			System.out.println("7 - Sair");
 			op = leitor.nextInt();
 			
@@ -57,6 +59,7 @@ public class MenuPrincipal {
 				}
 				break;
 			case 4:
+				dadosPedido(vend);
 				break;
 			case 5:
 				controllerProduto.listarTodos();
@@ -101,4 +104,39 @@ public class MenuPrincipal {
 		
 		controllerproduto.novoProduto(produto);
 	}
+
+	private void dadosPedido(Vendedor vend){
+		int auxPedido,op,controle = 0;
+		ControllerProduto produto = new ControllerProduto();
+		ItemPedido itemPedido = new ItemPedido();
+		Pedido pedido = new Pedido(vend);
+		double aux=0;
+		
+		do{
+			System.out.println("\t\tNOVO PEDIDO\n");
+			System.out.println("Codigo do produto: ");
+			auxPedido = leitor.nextInt();
+			while(produto.pesquisarCod(auxPedido)==false){
+				System.out.println("Verifique o Código informado: ");
+				auxPedido = leitor.nextInt();
+			}
+			itemPedido.setCodProduto(auxPedido);
+			System.out.println("Quantidade:");
+			itemPedido.setQtd(leitor.nextInt());
+			itemPedido.setUnitario(produto.valorUnitario(auxPedido));
+			itemPedido.setTotal(itemPedido.getQtd()*itemPedido.getUnitario());
+			pedido.setItemPedido(itemPedido, controle);
+			controle++;
+			aux = aux + itemPedido.getTotal();
+			
+			System.out.println("Adicionar mais Produtos? 1 - Sim/ 2 - Não: ");
+			op = leitor.nextInt();
+			while(op!= 1 && op != 2){
+				System.out.println("Entre com uma opção válida: ");
+				op = leitor.nextInt();
+			}
+		}while(op!=2);
+		pedido.setValorPedido(aux);
+	}
+	
 }
