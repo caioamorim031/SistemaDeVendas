@@ -2,7 +2,6 @@ package br.com.SistemaVendas.gui;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import br.com.SistemaVendas.controller.ControllerPedido;
 import br.com.SistemaVendas.controller.ControllerProduto;
 import br.com.SistemaVendas.controller.ControllerVendedor;
@@ -12,6 +11,7 @@ import br.com.SistemaVendas.model.Produto;
 import br.com.SistemaVendas.model.Vendedor;
 
 public class MenuPrincipal {
+	
 	private Scanner leitor = new Scanner(System.in);
 	
 	public void menuFuncionario(Vendedor vend) throws IOException{
@@ -22,6 +22,7 @@ public class MenuPrincipal {
 		ControllerPedido controllerPedido = new ControllerPedido();
 		Scanner leitor = new Scanner(System.in);
 		int op;
+		
 		do{
 			if(vend.getTipo()==1){
 				System.out.println("MENU DO FUNCIONÁRIO\n");
@@ -91,9 +92,7 @@ public class MenuPrincipal {
 		ControllerProduto controllerproduto = new ControllerProduto();
 		Produto produto = new Produto();
 		Scanner leitor = new Scanner(System.in);
-		
-		produto.setCodProduto(controllerproduto.sizeProdutos()+1);
-		
+				
 		System.out.print("Nome: ");
 		produto.setNome(leitor.nextLine());
 		
@@ -112,25 +111,29 @@ public class MenuPrincipal {
 
 	private void dadosPedido(Vendedor vend){
 		int auxPedido,op,controle = 0;
-		ControllerProduto produto = new ControllerProduto();
+		ControllerProduto contproduto = new ControllerProduto();
 		ItemPedido itemPedido = new ItemPedido();
+		Produto produto = new Produto();
 		Pedido pedido = new Pedido(vend);
 		double aux=0;
 		
 		do{
+			
 			System.out.println("\t\tNOVO PEDIDO\n");
 			System.out.println("Codigo do produto: ");
 			auxPedido = leitor.nextInt();
-			while(produto.pesquisarCod(auxPedido)==false){
+			
+			while(contproduto.pesquisarCod(auxPedido)==false){
 				System.out.println("Verifique o Código informado: ");
 				auxPedido = leitor.nextInt();
 			}
+			
 			itemPedido.setCodProduto(auxPedido);
 			System.out.println("Quantidade:");
 			itemPedido.setQtd(leitor.nextInt());
-			itemPedido.setUnitario(produto.valorUnitario(auxPedido));
-			itemPedido.setTotal(itemPedido.getQtd()*itemPedido.getUnitario());
+			itemPedido.setTotal(itemPedido.getQtd()*produto.getPreco());
 			pedido.setItemPedido(itemPedido, controle);
+
 			controle++;
 			aux = aux + itemPedido.getTotal();
 			
@@ -140,6 +143,7 @@ public class MenuPrincipal {
 				System.out.println("Entre com uma opção válida: ");
 				op = leitor.nextInt();
 			}
+			
 		}while(op!=2);
 		pedido.setValorPedido(aux);
 	}

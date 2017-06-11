@@ -24,12 +24,12 @@ public class ControllerPedido {
 			Pedido tmp = pedidos.get(i);
 			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			String data = df.format(tmp.getDataPedido());
-			repositorio.salvarDados(tmp, data);
+			//repositorio.salvarDados(tmp, data);
 		}
 	}
 	public void lerPedidos(){
 		try {
-			repositorio.lerDados(pedidos);
+			//repositorio.lerDados(pedidos);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

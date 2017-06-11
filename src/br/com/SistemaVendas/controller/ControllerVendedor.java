@@ -9,7 +9,6 @@ public class ControllerVendedor {
 
 	RepositorioVendedor repositorio = new RepositorioVendedor();
 	
-	Vendedor funcionario = new Vendedor();
 	static ArrayList<Vendedor> vendedores= new ArrayList<Vendedor>();
 	
 	public boolean novoFuncionario(Vendedor vend){

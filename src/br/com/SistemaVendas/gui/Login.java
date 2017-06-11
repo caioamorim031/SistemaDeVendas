@@ -1,4 +1,4 @@
-package br.com.SistemaVendas.gui;
+	package br.com.SistemaVendas.gui;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,7 +19,6 @@ public class Login {
 			solicitarInformacao();
 		}
 		showlogin();
-		
 	}
 	
 	public static void solicitarInformacao() throws IOException{
@@ -27,7 +26,7 @@ public class Login {
 		Vendedor vendedor = new Vendedor();
 		ControllerVendedor controller = new ControllerVendedor();
 		char aux;
-		
+
 		System.out.print("Entre com o nome: ");
 		vendedor.setNome(leitor.nextLine());
 		
@@ -57,9 +56,11 @@ public class Login {
 			}
 			else
 				vendedor.setTipo(0);
+			
 			if(controller.novoFuncionario(vendedor)==true){
 				System.out.println("\t\tCADASTRO REALIZADO!\n\n\n\n\n");
 			}
+			
 			else{
 				System.out.println("\t\tCADASTRO NÃO REALIZADO!\n\n\n\n\n");
 			}

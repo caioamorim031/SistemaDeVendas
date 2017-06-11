@@ -1,49 +1,34 @@
 package br.com.SistemaVendas.repositorio;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-
+import br.com.SistemaVendas.factory.ConnectionFactory;
 import br.com.SistemaVendas.model.Vendedor;
 
-public class RepositorioVendedor implements Serializable {
+public class RepositorioVendedor {
 
-	private static final long serialVersionUID = 1L;
-	private ObjectOutputStream arquivo;
-
-	private File diretorio = new File("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Vendedores/");
-
-	public void salvarDados(Vendedor vendedor, String nomeVendedor) {
+	public void novoVendedor(Vendedor Vend){
+		
+		String sql = "insert into sistemadevendasdb.vendedor (senha_vend,nome_vend,end_vend,sal_vend,tipo_vend) values (?,?,?,?,?)";
 		try {
-			arquivo = new ObjectOutputStream(new FileOutputStream("C:/Users/Caio/Documents/GitHub/SistemaDeVendas/Vendedores/" + (nomeVendedor + ".bin")));
-			arquivo.writeObject(vendedor);
-			arquivo.close();
-		} catch (IOException e) {
+			Connection conexao = ConnectionFactory.getConnection();
+			PreparedStatement statement = conexao.prepareStatement(sql);
+			
+			statement.setString(1, Vend.getSenha());
+			statement.setString(2, Vend.getNome());
+			statement.setString(3, Vend.getEndereco());
+			statement.setDouble(4, Vend.getSalarioM());
+			statement.setInt(5, Vend.getTipo());
+			
+			statement.execute();
+			conexao.commit();
+			
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
-
-	public void lerDados(ArrayList<Vendedor> vendedores) throws ClassNotFoundException {
-		File arquivos[] = diretorio.listFiles();
-		ObjectInputStream arquivo;
-		try {
-			for (int i = 0; i < arquivos.length; i++) {
-				Vendedor tmp = new Vendedor();
-				File tmpArq = arquivos[i];
-				arquivo = new ObjectInputStream(new FileInputStream(tmpArq));
-				tmp = (Vendedor) arquivo.readObject();
-				vendedores.add(tmp);
-				arquivo.close();
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 }

@@ -3,15 +3,14 @@ package br.com.SistemaVendas.model;
 import java.io.Serializable;
 
 public class Vendedor extends Usuario implements Serializable {
-
 	
 	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String endereco;
 	private double salarioM;
 	private int tipo;
-	
-	public int getTipo() {
+
+ 	public int getTipo() {
 		return tipo;
 	}
 	public void setTipo(int tipo) {
@@ -35,5 +34,4 @@ public class Vendedor extends Usuario implements Serializable {
 	public void setSalarioM(double salarioM) {
 		this.salarioM = salarioM;
 	}
-
 }

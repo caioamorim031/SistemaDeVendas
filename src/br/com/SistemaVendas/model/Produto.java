@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Produto implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int codProduto;
 	private String nome;
@@ -48,6 +45,5 @@ public class Produto implements Serializable {
 	}
 	public void setCodProduto(int codProduto) {
 		this.codProduto = codProduto;
-	}
-	
+	}	
 }

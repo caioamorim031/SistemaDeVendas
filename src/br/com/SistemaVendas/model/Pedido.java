@@ -5,10 +5,8 @@ import java.util.Date;
 
 public class Pedido implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	private int id_Pedido;
 	private Vendedor vendedor;
 	private Date dataPedido;
 	private ArrayList<ItemPedido> produtos = new ArrayList<ItemPedido>();
@@ -42,13 +40,17 @@ public class Pedido implements Serializable {
 	public void setValorPedido(double valorPedido) {
 		this.valorPedido = valorPedido;
 	}
-	
 	public void setItemPedido(ItemPedido item,int posicao){
-		this.produtos.set(posicao, item);
+		this.produtos.add(posicao, item);
 	}
-	
 	public ItemPedido getItemPedido(int posicao){
 		return this.produtos.get(posicao);
 	}
-
+	public int getId_Pedido() {
+		return id_Pedido;
+	}
+	public void setId_Pedido(int id_Pedido) {
+		this.id_Pedido = id_Pedido;
+	}
+	
 }
